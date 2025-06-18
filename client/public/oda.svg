@@ -1,66 +1,91 @@
-<svg width="400" height="700" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background walls -->
-  <rect x="0" y="0" width="400" height="700" fill="#D4B896"/>
+<svg width="400" height="700" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="700" fill="#a89271"/>
   
-  <!-- Main wall area -->
-  <rect x="20" y="20" width="360" height="480" fill="#F5E6D3"/>
+  <!-- Main wall -->
+  <rect x="40" y="40" width="320" height="380" fill="#f0e8d5"/>
   
   <!-- Floor -->
-  <rect x="0" y="500" width="400" height="200" fill="#B8A0C7"/>
+  <rect x="0" y="420" width="400" height="280" fill="#9d7fb5"/>
   
-  <!-- Wall borders -->
-  <rect x="0" y="0" width="20" height="700" fill="#A68B5B"/>
-  <rect x="380" y="0" width="20" height="700" fill="#A68B5B"/>
-  <rect x="0" y="0" width="400" height="20" fill="#A68B5B"/>
-  <rect x="20" y="480" width="360" height="20" fill="#A68B5B"/>
+  <!-- Left wall -->
+  <rect x="0" y="0" width="40" height="700" fill="#a89271"/>
   
-  <!-- TV/Monitor on wall -->
-  <rect x="40" y="100" width="140" height="100" fill="#4A4A4A"/>
-  <rect x="50" y="110" width="120" height="80" fill="#2A2A2A"/>
-  <rect x="60" y="120" width="100" height="60" fill="#6A4C93"/>
-  <!-- TV screen content -->
-  <rect x="70" y="130" width="15" height="40" fill="#00CED1"/>
-  <rect x="90" y="130" width="15" height="40" fill="#FF6347"/>
-  <rect x="110" y="130" width="15" height="40" fill="#FFA500"/>
+  <!-- Right wall -->
+  <rect x="360" y="0" width="40" height="700" fill="#a89271"/>
   
-  <!-- Desk -->
-  <rect x="40" y="280" width="160" height="80" fill="#8A6BBE"/>
-  <rect x="40" y="280" width="160" height="15" fill="#A084CA"/>
+  <!-- Top wall border -->
+  <rect x="0" y="0" width="400" height="40" fill="#a89271"/>
+  
+  <!-- Wall-floor border -->
+  <rect x="40" y="420" width="320" height="20" fill="#a89271"/>
+  
+  <!-- Window on left wall -->
+  <rect x="50" y="120" width="120" height="80" fill="#8a64a3"/>
+  <rect x="55" y="125" width="110" height="70" fill="#5a4d6b"/>
+  <rect x="60" y="130" width="100" height="60" fill="#8a64a3"/>
+  <!-- Window content - sky and colors -->
+  <rect x="70" y="140" width="20" height="40" fill="#4fd0e4"/>
+  <rect x="90" y="140" width="20" height="40" fill="#ff6b47"/>
+  <rect x="110" y="140" width="20" height="40" fill="#ffb347"/>
+  <rect x="130" y="140" width="20" height="40" fill="#4fd0e4"/>
+  
+  <!-- Desk area -->
+  <rect x="80" y="320" width="120" height="60" fill="#8a64a3"/>
+  <rect x="80" y="320" width="120" height="12" fill="#a084ca"/>
+  
   <!-- Desk legs -->
-  <rect x="50" y="360" width="15" height="60" fill="#7858A6"/>
-  <rect x="185" y="360" width="15" height="60" fill="#7858A6"/>
-  <!-- Desk drawer -->
-  <rect x="150" y="300" width="40" height="20" fill="#6A4C93"/>
-  <rect x="165" y="305" width="10" height="10" fill="#4A4A4A"/>
+  <rect x="85" y="380" width="12" height="40" fill="#724891"/>
+  <rect x="183" y="380" width="12" height="40" fill="#724891"/>
   
-  <!-- Computer on desk -->
-  <rect x="60" y="240" width="50" height="40" fill="#2A2A2A"/>
-  <rect x="65" y="245" width="40" height="30" fill="#1A1A1A"/>
-  
-  <!-- Lamp on desk -->
-  <rect x="150" y="250" width="8" height="30" fill="#8B4513"/>
-  <rect x="145" y="245" width="18" height="8" fill="#D2691E"/>
+  <!-- Monitor on desk -->
+  <rect x="90" y="280" width="40" height="40" fill="#3a4a4a"/>
+  <rect x="95" y="285" width="30" height="25" fill="#2a3a3a"/>
+  <rect x="100" y="290" width="20" height="15" fill="#1a2a2a"/>
   
   <!-- Chair -->
-  <rect x="220" y="300" width="15" height="60" fill="#8A6BBE"/>
-  <rect x="220" y="360" width="60" height="15" fill="#8A6BBE"/>
-  <rect x="245" y="375" width="15" height="45" fill="#7858A6"/>
+  <rect x="145" y="350" width="30" height="12" fill="#8a64a3"/>
+  <rect x="155" y="330" width="10" height="20" fill="#8a64a3"/>
+  <rect x="150" y="362" width="8" height="30" fill="#724891"/>
+  <rect x="162" y="362" width="8" height="30" fill="#724891"/>
   
-  <!-- Armchair/Sofa -->
-  <rect x="280" y="280" width="80" height="60" fill="#8A6BBE"/>
-  <rect x="280" y="280" width="80" height="15" fill="#A084CA"/>
+  <!-- Wooden lamp on desk -->
+  <rect x="170" y="290" width="6" height="30" fill="#8b4513"/>
+  <rect x="165" y="285" width="16" height="8" fill="#d2691e"/>
+  
+  <!-- Armchair/couch -->
+  <rect x="240" y="320" width="80" height="50" fill="#8a64a3"/>
+  <rect x="240" y="320" width="80" height="10" fill="#a084ca"/>
+  
   <!-- Armchair back -->
-  <rect x="280" y="260" width="80" height="20" fill="#A084CA"/>
-  <!-- Armchair arms -->
-  <rect x="280" y="280" width="15" height="40" fill="#9370DB"/>
-  <rect x="345" y="280" width="15" height="40" fill="#9370DB"/>
-  <!-- Cushion pattern -->
-  <rect x="300" y="290" width="40" height="30" fill="#F5E6D3"/>
-  <rect x="305" y="295" width="10" height="10" fill="#D4B896"/>
-  <rect x="320" y="295" width="10" height="10" fill="#D4B896"/>
-  <rect x="315" y="305" width="10" height="10" fill="#D4B896"/>
+  <rect x="240" y="300" width="80" height="20" fill="#a084ca"/>
   
-  <!-- Small table/stand -->
-  <rect x="360" y="340" width="30" height="40" fill="#8A6BBE"/>
-  <rect x="360" y="340" width="30" height="8" fill="#A084CA"/>
+  <!-- Armchair arms -->
+  <rect x="240" y="320" width="12" height="30" fill="#9370db"/>
+  <rect x="308" y="320" width="12" height="30" fill="#9370db"/>
+  
+  <!-- Pillow/cushion -->
+  <rect x="260" y="330" width="40" height="20" fill="#f0e8d5"/>
+  <rect x="265" y="335" width="8" height="8" fill="#d4b896"/>
+  <rect x="275" y="335" width="8" height="8" fill="#d4b896"/>
+  <rect x="285" y="335" width="8" height="8" fill="#d4b896"/>
+  <rect x="270" y="340" width="8" height="8" fill="#d4b896"/>
+  <rect x="280" y="340" width="8" height="8" fill="#d4b896"/>
+  
+  <!-- Side table -->
+  <rect x="330" y="350" width="25" height="30" fill="#8a64a3"/>
+  <rect x="330" y="350" width="25" height="6" fill="#a084ca"/>
+  
+  <!-- Desk drawer -->
+  <rect x="150" y="340" width="30" height="15" fill="#724891"/>
+  <rect x="160" y="345" width="8" height="5" fill="#5a4d6b"/>
+  
+  <!-- Floor pattern (subtle) -->
+  <rect x="20" y="450" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="40" y="470" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="60" y="450" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="80" y="490" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="300" y="460" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="320" y="480" width="8" height="8" fill="#8d6fa8"/>
+  <rect x="340" y="450" width="8" height="8" fill="#8d6fa8"/>
 </svg>
