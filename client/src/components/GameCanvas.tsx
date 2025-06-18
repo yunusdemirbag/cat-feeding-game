@@ -235,8 +235,8 @@ export function GameCanvas() {
   const showWomanReaction = (text: string) => {
     const bubble: SpeechBubble = {
       id: `woman_bubble_${Date.now()}`,
-      x: 350, // Near woman position
-      y: 520,
+      x: 370, // Near woman position
+      y: 440,
       text,
       color: '#FFE4E1',
       timestamp: Date.now()
@@ -511,7 +511,7 @@ export function GameCanvas() {
 
     // Draw woman character near water bowl
     if (images.woman) {
-      ctx.drawImage(images.woman, 320, 520, 80, 100);
+      ctx.drawImage(images.woman, 310, 450, 120, 150);
     }
 
   }, [cats, items, speechBubbles, images, imagesLoaded]);
