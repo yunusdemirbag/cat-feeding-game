@@ -66,7 +66,8 @@ export function GameCanvas() {
       pars: '/pars.png',
       food: '/mama.png',
       water: '/su.png',
-      woman: '/af.png'
+      woman: '/af.png',
+      room: '/oda.svg'
     };
 
     let loadedCount = 0;
@@ -102,8 +103,8 @@ export function GameCanvas() {
         {
           id: 'misa',
           name: 'Mişa',
-          x: Math.random() * 200 + 50,
-          y: Math.random() * 150 + 350,
+          x: 80,
+          y: 450,
           width: 80,
           height: 80,
           color: '#666',
@@ -112,8 +113,8 @@ export function GameCanvas() {
         {
           id: 'pars',
           name: 'Pars',
-          x: Math.random() * 200 + 150,
-          y: Math.random() * 150 + 350,
+          x: 240,
+          y: 450,
           width: 80,
           height: 80,
           color: '#DAA520',
@@ -125,25 +126,25 @@ export function GameCanvas() {
         {
           id: 'food',
           type: 'food',
-          x: 50,
-          y: 600,
+          x: 60,
+          y: 620,
           width: 60,
           height: 60,
           color: '#8B4513',
-          originalX: 50,
-          originalY: 600,
+          originalX: 60,
+          originalY: 620,
           isDragging: false
         },
         {
           id: 'water',
           type: 'water',
-          x: 290,
-          y: 600,
+          x: 280,
+          y: 620,
           width: 60,
           height: 60,
           color: '#4169E1',
-          originalX: 290,
-          originalY: 600,
+          originalX: 280,
+          originalY: 620,
           isDragging: false
         }
       ];
@@ -388,13 +389,18 @@ export function GameCanvas() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw background
-    ctx.fillStyle = '#f4e4bc';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Draw floor pattern
-    ctx.fillStyle = '#e6d7a8';
-    ctx.fillRect(0, 500, canvas.width, canvas.height - 500);
+    // Draw room background
+    if (images.room) {
+      ctx.drawImage(images.room, 0, 0, canvas.width, canvas.height);
+    } else {
+      // Fallback background
+      ctx.fillStyle = '#f4e4bc';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw floor pattern
+      ctx.fillStyle = '#e6d7a8';
+      ctx.fillRect(0, 500, canvas.width, canvas.height - 500);
+    }
 
     // Draw cats with pixel art
     cats.forEach(cat => {
@@ -468,7 +474,7 @@ export function GameCanvas() {
 
     // Draw woman character in background
     if (images.woman) {
-      ctx.drawImage(images.woman, 300, 200, 60, 80);
+      ctx.drawImage(images.woman, 160, 280, 80, 100);
     }
 
   }, [cats, items, speechBubbles, images, imagesLoaded]);

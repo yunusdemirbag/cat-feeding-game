@@ -1,0 +1,35 @@
+<svg width="400" height="700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background room -->
+  <rect x="0" y="0" width="400" height="700" fill="#f4e4bc"/>
+  
+  <!-- Floor pattern -->
+  <pattern id="floorTiles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <rect x="0" y="0" width="20" height="20" fill="#e6d7a8" stroke="#d4c491" stroke-width="1"/>
+  </pattern>
+  <rect x="0" y="500" width="400" height="200" fill="url(#floorTiles)"/>
+  
+  <!-- Wall pattern -->
+  <pattern id="wallPaper" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <rect x="0" y="0" width="40" height="40" fill="#f8f0d8"/>
+    <circle cx="20" cy="20" r="3" fill="#e8d8c0"/>
+  </pattern>
+  <rect x="0" y="0" width="400" height="500" fill="url(#wallPaper)"/>
+  
+  <!-- Window -->
+  <rect x="50" y="50" width="100" height="80" fill="#87CEEB" stroke="#654321" stroke-width="4"/>
+  <rect x="50" y="50" width="100" height="80" fill="none" stroke="#654321" stroke-width="2"/>
+  <line x1="100" y1="50" x2="100" y2="130" stroke="#654321" stroke-width="2"/>
+  <line x1="50" y1="90" x2="150" y2="90" stroke="#654321" stroke-width="2"/>
+  
+  <!-- Door -->
+  <rect x="300" y="300" width="80" height="120" fill="#8B4513" stroke="#654321" stroke-width="3"/>
+  <circle cx="320" cy="360" r="3" fill="#FFD700"/>
+  
+  <!-- Furniture - Table -->
+  <rect x="200" y="200" width="80" height="60" fill="#8B4513"/>
+  <rect x="200" y="200" width="80" height="10" fill="#A0522D"/>
+  
+  <!-- Carpet -->
+  <ellipse cx="200" cy="550" rx="120" ry="80" fill="#CD853F" stroke="#8B4513" stroke-width="2"/>
+  <ellipse cx="200" cy="550" rx="100" ry="60" fill="#DEB887"/>
+</svg>
