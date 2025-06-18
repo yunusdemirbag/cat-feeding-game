@@ -56,6 +56,44 @@ export function GameCanvas() {
   const [draggedItem, setDraggedItem] = useState<Item | null>(null);
   const [speechBubbles, setSpeechBubbles] = useState<SpeechBubble[]>([]);
   const [currentRequest, setCurrentRequest] = useState<{ cat: Cat; need: 'food' | 'water' } | null>(null);
+  const [images, setImages] = useState<{ [key: string]: HTMLImageElement }>({});
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Load images
+  useEffect(() => {
+    const imageUrls = {
+      misa: '/misa.png',
+      pars: '/pars.png',
+      food: '/mama.png',
+      water: '/su.png',
+      woman: '/af.png'
+    };
+
+    let loadedCount = 0;
+    const totalImages = Object.keys(imageUrls).length;
+    const loadedImages: { [key: string]: HTMLImageElement } = {};
+
+    Object.entries(imageUrls).forEach(([key, url]) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedImages[key] = img;
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImages(loadedImages);
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        console.warn(`Görsel yüklenemedi: ${key}`);
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImages(loadedImages);
+          setImagesLoaded(true);
+        }
+      };
+      img.src = url;
+    });
+  }, []);
 
   // Initialize game objects
   useEffect(() => {
