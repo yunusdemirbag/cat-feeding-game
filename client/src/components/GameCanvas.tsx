@@ -192,6 +192,15 @@ export function GameCanvas() {
       '#FFE4B5'
     );
 
+    // Woman reaction to cat's need
+    setTimeout(() => {
+      showWomanReaction(
+        randomNeed === 'food' 
+          ? "Oy oy kıyamam! Annen geliyor!" 
+          : "Susadın mı canım? Bekle!"
+      );
+    }, 1000);
+
     // Auto-clear request after 8 seconds
     setTimeout(() => {
       if (currentRequest?.cat.id === randomCat.id) {
@@ -223,10 +232,33 @@ export function GameCanvas() {
     }, 3000);
   };
 
+  const showWomanReaction = (text: string) => {
+    const bubble: SpeechBubble = {
+      id: `woman_bubble_${Date.now()}`,
+      x: 350, // Near woman position
+      y: 520,
+      text,
+      color: '#FFE4E1',
+      timestamp: Date.now()
+    };
+    
+    setSpeechBubbles(prev => [...prev, bubble]);
+    
+    setTimeout(() => {
+      setSpeechBubbles(prev => prev.filter(b => b.id !== bubble.id));
+    }, 3000);
+  };
+
   const handleCorrectDelivery = (cat: Cat) => {
     incrementScore();
     playSuccess();
     showSpeechBubble(cat, cat.currentNeed === 'food' ? "Hmm... Çok güzeldi!" : "Şap şap... oh be anne!", '#90EE90');
+    
+    // Woman's happy reaction
+    setTimeout(() => {
+      showWomanReaction("Aferin canım, doğru seçim! 😊");
+    }, 500);
+    
     clearCurrentRequest();
     
     setTimeout(() => {
@@ -239,6 +271,11 @@ export function GameCanvas() {
   const handleWrongDelivery = (cat: Cat) => {
     playHit();
     showSpeechBubble(cat, "Bu değil anne! 😾", '#FFB6C1');
+    
+    // Woman's concerned reaction
+    setTimeout(() => {
+      showWomanReaction("Hay Allah, yanlış verdin!");
+    }, 500);
   };
 
   // Event handlers
@@ -472,9 +509,9 @@ export function GameCanvas() {
       ctx.restore();
     });
 
-    // Draw woman character in background
+    // Draw woman character near water bowl
     if (images.woman) {
-      ctx.drawImage(images.woman, 160, 280, 80, 100);
+      ctx.drawImage(images.woman, 320, 520, 80, 100);
     }
 
   }, [cats, items, speechBubbles, images, imagesLoaded]);

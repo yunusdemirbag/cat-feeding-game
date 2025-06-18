@@ -50,8 +50,8 @@ export function CatFeedingGame() {
   return (
     <div className="w-full h-full relative bg-gradient-to-br from-purple-400 via-purple-600 to-purple-800 flex items-center justify-center overflow-hidden">
       <div className="relative w-full max-w-md h-full max-h-[700px] bg-amber-50 border-4 border-amber-900 rounded-lg overflow-hidden" style={{ aspectRatio: '400/700' }}>
-        {/* Game UI Overlay */}
-        <div className="absolute top-3 left-3 z-50 text-gray-800 font-bold text-sm">
+        {/* Game UI Overlay - moved to right */}
+        <div className="absolute top-3 right-3 z-50 text-gray-800 font-bold text-sm text-right">
           <div>Skor: <span className="text-blue-600">{score}</span></div>
           <div>Süre: <span className="text-red-600">{timeLeft}</span>s</div>
           <div>Seviye: <span className="text-green-600">{level}</span></div>
