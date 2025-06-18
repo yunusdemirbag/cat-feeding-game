@@ -380,7 +380,7 @@ export function GameCanvas() {
   // Render game
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !imagesLoaded) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -392,83 +392,86 @@ export function GameCanvas() {
     ctx.fillStyle = '#f4e4bc';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw cats
+    // Draw floor pattern
+    ctx.fillStyle = '#e6d7a8';
+    ctx.fillRect(0, 500, canvas.width, canvas.height - 500);
+
+    // Draw cats with pixel art
     cats.forEach(cat => {
-      ctx.fillStyle = cat.color;
-      ctx.fillRect(cat.x, cat.y, cat.width, cat.height);
-      
-      // Draw cat eyes
-      ctx.fillStyle = 'white';
-      ctx.fillRect(cat.x + 15, cat.y + 20, 15, 15);
-      ctx.fillRect(cat.x + 50, cat.y + 20, 15, 15);
-      
-      ctx.fillStyle = 'black';
-      ctx.fillRect(cat.x + 20, cat.y + 25, 5, 5);
-      ctx.fillRect(cat.x + 55, cat.y + 25, 5, 5);
-      
-      // Draw cat ears
-      ctx.fillStyle = cat.color;
-      ctx.beginPath();
-      ctx.moveTo(cat.x + 10, cat.y);
-      ctx.lineTo(cat.x + 25, cat.y - 15);
-      ctx.lineTo(cat.x + 30, cat.y);
-      ctx.fill();
-      
-      ctx.beginPath();
-      ctx.moveTo(cat.x + 50, cat.y);
-      ctx.lineTo(cat.x + 55, cat.y - 15);
-      ctx.lineTo(cat.x + 70, cat.y);
-      ctx.fill();
+      const catImage = images[cat.id];
+      if (catImage) {
+        ctx.drawImage(catImage, cat.x, cat.y, cat.width, cat.height);
+      } else {
+        // Fallback to colored rectangle if image not loaded
+        ctx.fillStyle = cat.color;
+        ctx.fillRect(cat.x, cat.y, cat.width, cat.height);
+      }
 
       // Draw name
       ctx.fillStyle = 'black';
-      ctx.font = '14px Arial';
+      ctx.font = 'bold 14px Arial';
       ctx.textAlign = 'center';
       ctx.fillText(cat.name, cat.x + cat.width / 2, cat.y + cat.height + 20);
 
       // Draw need indicator
       if (cat.currentNeed) {
-        ctx.fillStyle = cat.currentNeed === 'food' ? '#8B4513' : '#4169E1';
+        ctx.fillStyle = cat.currentNeed === 'food' ? '#FF6B6B' : '#4ECDC4';
         ctx.beginPath();
-        ctx.arc(cat.x + cat.width - 10, cat.y + 10, 8, 0, Math.PI * 2);
+        ctx.arc(cat.x + cat.width - 15, cat.y + 15, 12, 0, Math.PI * 2);
         ctx.fill();
         
         ctx.fillStyle = 'white';
-        ctx.font = '12px Arial';
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.font = 'bold 16px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText(cat.currentNeed === 'food' ? '🍽' : '💧', cat.x + cat.width - 10, cat.y + 15);
+        const emoji = cat.currentNeed === 'food' ? '🍽' : '💧';
+        ctx.strokeText(emoji, cat.x + cat.width - 15, cat.y + 22);
+        ctx.fillText(emoji, cat.x + cat.width - 15, cat.y + 22);
       }
     });
 
-    // Draw items
+    // Draw items with pixel art
     items.forEach(item => {
-      ctx.fillStyle = item.color;
+      ctx.save();
+      
       if (item.isDragging) {
         ctx.globalAlpha = 0.8;
-        ctx.save();
+        ctx.translate(item.x + item.width / 2, item.y + item.height / 2);
         ctx.scale(1.1, 1.1);
+        ctx.translate(-item.width / 2, -item.height / 2);
+      } else {
+        ctx.translate(item.x, item.y);
+      }
+
+      const itemImage = images[item.type];
+      if (itemImage) {
+        ctx.drawImage(itemImage, 0, 0, item.width, item.height);
+      } else {
+        // Fallback to colored rectangle if image not loaded
+        ctx.fillStyle = item.color;
+        ctx.fillRect(0, 0, item.width, item.height);
+        
+        // Draw item icon as fallback
+        ctx.fillStyle = 'white';
+        ctx.font = '20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(
+          item.type === 'food' ? '🍽️' : '💧',
+          item.width / 2,
+          item.height / 2 + 7
+        );
       }
       
-      ctx.fillRect(item.x, item.y, item.width, item.height);
-      
-      // Draw item icon
-      ctx.fillStyle = 'white';
-      ctx.font = '20px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText(
-        item.type === 'food' ? '🍽️' : '💧',
-        item.x + item.width / 2,
-        item.y + item.height / 2 + 7
-      );
-      
-      if (item.isDragging) {
-        ctx.restore();
-        ctx.globalAlpha = 1;
-      }
+      ctx.restore();
     });
 
-    // Draw speech bubbles (handled by CSS overlay for better styling)
-  }, [cats, items, speechBubbles]);
+    // Draw woman character in background
+    if (images.woman) {
+      ctx.drawImage(images.woman, 300, 200, 60, 80);
+    }
+
+  }, [cats, items, speechBubbles, images, imagesLoaded]);
 
   return (
     <div className="relative w-full h-full">

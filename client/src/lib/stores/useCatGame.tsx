@@ -5,6 +5,7 @@ export type GamePhase = "ready" | "playing" | "ended";
 
 interface CatGameState {
   phase: GamePhase;
+  gamePhase: GamePhase;
   score: number;
   level: number;
   timeLeft: number;
@@ -23,6 +24,7 @@ interface CatGameState {
 export const useCatGame = create<CatGameState>()(
   subscribeWithSelector((set, get) => ({
     phase: "ready",
+    gamePhase: "ready",
     score: 0,
     level: 1,
     timeLeft: 20,
@@ -31,6 +33,7 @@ export const useCatGame = create<CatGameState>()(
     startGame: () => {
       set(() => ({
         phase: "playing",
+        gamePhase: "playing",
         gameRunning: true,
         score: 0,
         level: 1,
@@ -41,6 +44,7 @@ export const useCatGame = create<CatGameState>()(
     restartGame: () => {
       set(() => ({
         phase: "ready",
+        gamePhase: "ready",
         gameRunning: false,
         score: 0,
         level: 1,
@@ -51,6 +55,7 @@ export const useCatGame = create<CatGameState>()(
     endGame: () => {
       set(() => ({
         phase: "ended",
+        gamePhase: "ended",
         gameRunning: false
       }));
     },
@@ -77,6 +82,7 @@ export const useCatGame = create<CatGameState>()(
     resetGame: () => {
       set(() => ({
         phase: "ready",
+        gamePhase: "ready",
         gameRunning: false,
         score: 0,
         level: 1,
