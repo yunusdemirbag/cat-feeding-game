@@ -11,21 +11,15 @@
   ],
   "routes": [
     {
-      "src": "/api/health",
-      "dest": "/server/api/health.ts"
+      "handle": "filesystem"
     },
     {
-      "src": "/api/game-state",
-      "dest": "/server/api/game-state.ts"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/public/$1"
+      "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "server/api/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 } 
